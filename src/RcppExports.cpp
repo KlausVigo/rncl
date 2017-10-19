@@ -18,15 +18,8 @@ BEGIN_RCPP
 END_RCPP
 }
 
-RcppExport SEXP rncl_collapse_single_cpp(SEXP, SEXP, SEXP, SEXP);
-RcppExport SEXP rncl_n_singletons(SEXP);
-RcppExport SEXP rncl_RNCL(SEXP, SEXP);
-
 static const R_CallMethodDef CallEntries[] = {
     {"_rncl_RNCL", (DL_FUNC) &_rncl_RNCL, 2},
-    {"rncl_collapse_single_cpp", (DL_FUNC) &rncl_collapse_single_cpp, 4},
-    {"rncl_n_singletons",        (DL_FUNC) &rncl_n_singletons,        1},
-    {"rncl_RNCL",                (DL_FUNC) &rncl_RNCL,                2},
     {NULL, NULL, 0}
 };
 
