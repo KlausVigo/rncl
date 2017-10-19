@@ -4,6 +4,7 @@
 \name{rncl}
 \alias{rncl}
 \alias{rncl-package}
+\alias{rncl}
 \title{rncl: An R interface to the NEXUS Class Library}
 \usage{
 rncl(file, file.format = c("nexus", "newick"), spacesAsUnderscores = TRUE,
@@ -145,9 +146,6 @@ relevant elements as a list. \code{phylo} (from the ape package)
 or \code{phylo4} (from the phylobase package) can be constructed
 from the elements contained in this list.
 }
-\author{
-Francois Michonneau
-}
 \references{
 Maddison DR, Swofford DL, Maddison WP (1997). "NEXUS:
 An extensible file format for systematic information". Systematic
@@ -166,4 +164,6 @@ more complex example that also use the data contained in NEXUS
 files, inspect the source code of the \code{readNCL} function in
 the phylobase package.
 }
-
+\author{
+Francois Michonneau
+}
