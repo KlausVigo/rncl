@@ -5,11 +5,13 @@ cache: packages
 
 r_binary_packages:
   - testthat
-  - ape
   - Rcpp
 
 r_packages:
   - covr
+  
+r_github_packages:
+  - KlausVigo/ape    
 
 after_success:
   - Rscript -e 'library(covr); coveralls()'
