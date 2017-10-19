@@ -139,16 +139,18 @@ test_that("weird files",{
 })
 
 test_that("simple tree with singletons",  {
-#    expect_warning(simple_tree <- read_newick_phylo(file=file.path(pth_nw_good, "simpleTree.tre")),
-#                   "fur")
+#    expect_warning(
+    simple_tree <- read_newick_phylo(file=file.path(pth_nw_good, "simpleTree.tre"))
+#                   ,"fur")
     expect_equal(typeof(simple_tree$edge), "integer")
     expect_equal(simple_tree$tip.label, c("A_1", "B__2", "C", "D"))
     expect_equal(simple_tree$node.label, c("mammals", "cats", "dogs"))
 })
 
 test_that("tree with singletons", {
-#    expect_warning(sing_tree <- read_newick_phylo(file=file.path(pth_nw_good, "singleton_tree.tre")),
-#                   "cats")
+#    expect_warning(
+        sing_tree <- read_newick_phylo(file=file.path(pth_nw_good, "singleton_tree.tre"))
+#                   , "cats")
     expect_equal(typeof(sing_tree$edge), "integer")
     expect_true(is.null(sing_tree$edge.length))
     expect_equal(sing_tree$tip.label, c("A", "B", "C", "D", "E"))
@@ -156,8 +158,9 @@ test_that("tree with singletons", {
 })
 
 test_that("tree with singletons", {
-#    expect_warning(sing_tree <- read_newick_phylo(file=file.path(pth_nw_good, "singleton_with_edge_length.tre")),
-#                   "cats")
+    #expect_warning(
+    sing_tree <- read_newick_phylo(file=file.path(pth_nw_good, "singleton_with_edge_length.tre"))
+    #               "cats")
     expect_equal(typeof(sing_tree$edge), "integer")
     expect_equal(length(sing_tree$edge.length), nrow(sing_tree$edge))
     expect_equal(sing_tree$tip.label, c("A", "B", "C", "D", "E"))
