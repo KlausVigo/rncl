@@ -253,12 +253,13 @@ build_raw_phylo <- function(ncl, missing_edge_length) {
 
 ## polishes things up
 ##' @importFrom ape collapse.singles
-build_phylo <- function(ncl, simplify=FALSE, missing_edge_length) {
+build_phylo <- function(ncl, simplify=FALSE, missing_edge_length, 
+                        collapse.singles) {
     trees <- build_raw_phylo(ncl, missing_edge_length)
     if (!is.null(trees)) {
         trees <- lapply(trees, function(tr) {
                             class(tr) <- "phylo"
-                            if (any(tabulate(tr$edge[, 1]) == 1L)) {
+                            if (collapse.singles) {
                                 tr <- collapse.singles(tr)
                             }
                             tr
@@ -286,6 +287,7 @@ build_phylo <- function(ncl, simplify=FALSE, missing_edge_length) {
 ##'     length is missing, they are all removed. Otherwise, the value
 ##'     must be a single numeric value. In any case, a warning will
 ##'     be generated if the tree contains missing edge lengths.
+##' @param collapse.singes a logical specifying whether to delete the internal ##'     nodes of degree 2.    
 ##' @param ... additional parameters to be passed to the rncl function
 ##' @return A phylo or a multiPhylo object
 ##' @author Francois Michonneau
@@ -294,21 +296,27 @@ build_phylo <- function(ncl, simplify=FALSE, missing_edge_length) {
 ##' @note \code{make_phylo} will soon be deprecated, use
 ##' \code{read_nexus_phylo} or \code{read_newick_phylo} instead.
 ##' @export
-read_nexus_phylo <- function(file, simplify=FALSE, missing_edge_length = NA, ...) {
+read_nexus_phylo <- function(file, simplify=FALSE, missing_edge_length = NA, 
+                             collapse.singles = FALSE, ...) {
     internal_make_phylo(file=file, simplify=simplify, file.format="nexus",
-               missing_edge_length = missing_edge_length, ...)
+               missing_edge_length = missing_edge_length, 
+               collapse.singles=collapse.singles, ...)
 }
 
 ##' @rdname read_nexus_phylo
 ##' @export
-read_newick_phylo <- function(file, simplify=FALSE, missing_edge_length = NA, ...) {
+read_newick_phylo <- function(file, simplify=FALSE, missing_edge_length = NA, 
+                              collapse.singles = FALSE, ...) {
     internal_make_phylo(file=file, simplify=simplify, file.format="newick",
-               missing_edge_length = missing_edge_length, ...)
+               missing_edge_length = missing_edge_length, 
+               collapse.singles=collapse.singles, ...)
 }
 
-internal_make_phylo <- function(file, simplify=FALSE, missing_edge_length = NA, ...) {
+internal_make_phylo <- function(file, simplify=FALSE, missing_edge_length = NA, 
+                                collapse.singles = FALSE, ...) {
     ncl <- rncl(file=file, ...)
-    build_phylo(ncl, simplify=simplify, missing_edge_length = missing_edge_length)
+    build_phylo(ncl, simplify=simplify, missing_edge_length=missing_edge_length,
+                collapse.singles=collapse.singles)
 }
 
 ##' @rdname read_nexus_phylo
