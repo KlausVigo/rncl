@@ -6,9 +6,11 @@
 \alias{make_phylo}
 \title{Read phylogenetic trees from files}
 \usage{
-read_nexus_phylo(file, simplify = FALSE, missing_edge_length = NA, ...)
+read_nexus_phylo(file, simplify = FALSE, missing_edge_length = NA,
+  collapse.singles = FALSE, ...)
 
-read_newick_phylo(file, simplify = FALSE, missing_edge_length = NA, ...)
+read_newick_phylo(file, simplify = FALSE, missing_edge_length = NA,
+  collapse.singles = FALSE, ...)
 
 make_phylo(file, simplify = FALSE, missing_edge_length = NA, ...)
 }
@@ -26,6 +28,8 @@ must be a single numeric value. In any case, a warning will
 be generated if the tree contains missing edge lengths.}
 
 \item{...}{additional parameters to be passed to the rncl function}
+
+\item{collapse.singes}{a logical specifying whether to delete the internal ##'     nodes of degree 2.}
 }
 \value{
 A phylo or a multiPhylo object
