@@ -7,10 +7,10 @@
 \title{Read phylogenetic trees from files}
 \usage{
 read_nexus_phylo(file, simplify = FALSE, missing_edge_length = NA,
-  collapse.singles = FALSE, ...)
+  collapse.singles = TRUE, ...)
 
 read_newick_phylo(file, simplify = FALSE, missing_edge_length = NA,
-  collapse.singles = FALSE, ...)
+  collapse.singles = TRUE, ...)
 
 make_phylo(file, simplify = FALSE, missing_edge_length = NA, ...)
 }

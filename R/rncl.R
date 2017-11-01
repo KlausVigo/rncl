@@ -297,7 +297,7 @@ build_phylo <- function(ncl, simplify=FALSE, missing_edge_length,
 ##' \code{read_nexus_phylo} or \code{read_newick_phylo} instead.
 ##' @export
 read_nexus_phylo <- function(file, simplify=FALSE, missing_edge_length = NA, 
-                             collapse.singles = FALSE, ...) {
+                             collapse.singles = TRUE, ...) {
     internal_make_phylo(file=file, simplify=simplify, file.format="nexus",
                missing_edge_length = missing_edge_length, 
                collapse.singles=collapse.singles, ...)
@@ -306,7 +306,7 @@ read_nexus_phylo <- function(file, simplify=FALSE, missing_edge_length = NA,
 ##' @rdname read_nexus_phylo
 ##' @export
 read_newick_phylo <- function(file, simplify=FALSE, missing_edge_length = NA, 
-                              collapse.singles = FALSE, ...) {
+                              collapse.singles = TRUE, ...) {
     internal_make_phylo(file=file, simplify=simplify, file.format="newick",
                missing_edge_length = missing_edge_length, 
                collapse.singles=collapse.singles, ...)
